@@ -10,11 +10,7 @@ class GalleriesController < ApplicationController
  end
 
  def create
-   binding.pry
-   Gallery.create(
-     name: params[:gallery][:name],
-     description: params[:gallery][:description]
-   )
+   Gallery.create(gallery_params)
    redirect_to "/"
  end
 
@@ -31,11 +27,8 @@ class GalleriesController < ApplicationController
 
  def update
   gallery= Gallery.find(params[:id])
-  gallery.update(
-    name: params[:gallery][:name],
-    description: params[:gallery][:description]
-  )
-    redirect_to "/"
+  gallery.update(gallery_params)
+  redirect_to "/"
  end 
   
 def destroy
@@ -44,4 +37,10 @@ def destroy
   redirect_to "/"
 end
 
+def gallery_params
+  params.require(:gallery).permit(:name, :description)
 end
+
+
+end
+

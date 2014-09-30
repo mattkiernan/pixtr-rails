@@ -2,12 +2,13 @@
 <ul>
   <% @galleries.each do |gallery| %>
     <li>
-    <%= link_to "#{gallery.name} - #{gallery.description}", "/galleries/#{gallery.id}" %>
-      <%= link_to "Edit", "/galleries/#{gallery.id}/edit" %>
-      <form action="/galleries/<%= gallery.id %>" method="POST">
+    <%= link_to "#{gallery.name} - #{gallery.description}", "/galleries/#{gallery.id}" %><br />
+    <%= link_to "Edit", "/galleries/#{gallery.id}/edit" %><br/>
+    <form action="/galleries/<%= gallery.id %>" method="POST">
         <input type="hidden" name="_method" value="DELETE" />
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
         <input type="submit" value="Delete" />
     </li>
+    <br />
   <% end %>
 </ul>
