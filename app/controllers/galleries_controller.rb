@@ -10,6 +10,7 @@ class GalleriesController < ApplicationController
  end
 
  def create
+   binding.pry
    Gallery.create(
      name: params[:gallery][:name],
      description: params[:gallery][:description]
