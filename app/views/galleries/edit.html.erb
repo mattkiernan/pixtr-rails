@@ -1,13 +1,3 @@
 <h2>Editing <%= @gallery.name %> Gallery</h2>
 
-<%= form_for @gallery do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-  <div>
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-  <%= form.submit %>
-<% end %>
+<%= render "form", gallery: @gallery  %>
