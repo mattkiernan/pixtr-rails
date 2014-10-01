@@ -33,10 +33,13 @@ class ImagesController < ApplicationController
   end
 
   def update
-    gallery = Gallery.find(params[:gallery_id])
-    image = gallery.images.find(params[:id])
-    image.update(image_params)
-    redirect_to gallery_image_path(gallery, image) 
+    @gallery = Gallery.find(params[:gallery_id])
+    @image = @gallery.images.find(params[:id])
+    if @image.update(image_params)
+      redirect_to gallery_image_path(@gallery, @image) 
+    else
+      render :edit
+    end
   end
 
 end
