@@ -7,9 +7,10 @@
 <ul>
   <% @gallery.images.each do |image| %>
     <li>
-      <%= image_tag image.url %>
-      <%= link_to image.name, gallery_image_path(@gallery, image) %>
-      <%= form_for image, method: :delete do |form| %>
+    <%= image_tag image.url %><br />
+    <%= link_to image.name, gallery_image_path(@gallery, image) %><br />
+    <%= link_to "Edit image", edit_gallery_image_path(@gallery, image) %><br />
+      <%= form_for [@gallery, image], method: :delete do |form| %>
         <% form.submit "Delete" %>
       <% end %>
   </li>
