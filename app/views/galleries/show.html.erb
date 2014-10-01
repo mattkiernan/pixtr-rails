@@ -1,2 +1,17 @@
 <h2>This is for <%= @gallery.name %> Gallery</h2>
 
+<%= link_to "Create new image", new_gallery_image_path(@gallery.id) %>
+
+<p><%= @gallery.description %></p>
+
+<ul>
+  <% @gallery.images.each do |image| %>
+    <li>
+      <%= image_tag image.url %>
+      <%= link_to image.name, gallery_image_path(@gallery, image) %>
+      <%= form_for image, method: :delete do |form| %>
+        <% form.submit "Delete" %>
+      <% end %>
+  </li>
+  <% end %>
+</ul>

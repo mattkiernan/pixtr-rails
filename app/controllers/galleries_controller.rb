@@ -15,9 +15,7 @@ class GalleriesController < ApplicationController
  end
 
  def show
-   gallery_id = params[:id]
    @gallery = load_gallery_from_url
-   render :show
  end
 
  def edit
