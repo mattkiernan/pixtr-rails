@@ -12,8 +12,12 @@ class ImagesController < ApplicationController
 
   def create
     @gallery = Gallery.find(params[:gallery_id])
-    @image = @gallery.images.create(image_params) 
-    redirect_to gallery_path(@gallery) 
+    @image = @gallery.images.new
+    if @image.save
+      redirect_to gallery_image_path(:gallery_id)
+    else
+      render :new
+    end 
   end
 
   def image_params
