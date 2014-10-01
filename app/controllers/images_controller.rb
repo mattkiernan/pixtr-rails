@@ -36,7 +36,7 @@ class ImagesController < ApplicationController
     gallery = Gallery.find(params[:gallery_id])
     image = gallery.images.find(params[:id])
     image.update(image_params)
-    redirect_to gallery_path(gallery) 
+    redirect_to gallery_image_path(gallery, image) 
   end
 
 end

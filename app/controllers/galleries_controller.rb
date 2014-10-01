@@ -10,8 +10,14 @@ class GalleriesController < ApplicationController
  end
 
  def create
-   gallery = Gallery.create(gallery_params)
-   redirect_to gallery_path(gallery) 
+   gallery = Gallery.new(gallery_params)
+   
+   if gallery.save 
+     redirect_to gallery_path(gallery) 
+   else
+     redirect_to root_path
+   end
+
  end
 
  def show
