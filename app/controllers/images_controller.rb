@@ -3,6 +3,7 @@ class ImagesController < ApplicationController
   def show
     @gallery =  load_gallery_from_url 
     @image = @gallery.images.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
@@ -45,6 +46,7 @@ class ImagesController < ApplicationController
       render :edit
     end
   end
+
 
   def load_gallery_from_url
     current_user.galleries.find(params[:gallery_id])
