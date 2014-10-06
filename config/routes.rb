@@ -6,7 +6,12 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   resources :galleries do
-    resources :images, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :images, only: [:new, :create, :edit, :update, :show, :destroy] 
   end
+
+  resources :images, only: [] do
+    resources :comments, only: [:create]  
+  end
+
 
 end
