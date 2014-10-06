@@ -3,11 +3,17 @@
 <div><%= image_tag @image.url %></div>
 <% @comments.each do |comment| %>
   <ul>
-    <li><%= comment.body %></li>
+    <li>
+    <%= comment.body %>
+    <%= form_for [@image, @comment], method: :delete do |form| %>
+      <%= form.submit "Delete" %>
+      </li>
+    <% end %>
   </ul>
 <% end %>
 <br />
 <div>
+  <%= render "error_messages", target: @comment %>
   <%= form_for [@image, @comment] do |form| %>
     <%= form.label :body, "Comment" %>
     <%= form.text_field :body %>
