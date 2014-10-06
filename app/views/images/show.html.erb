@@ -2,14 +2,7 @@
 
 <div><%= image_tag @image.url %></div>
 <% @comments.each do |comment| %>
-  <ul>
-    <li>
-    <%= comment.body %>
-    <%= form_for [@image, @comment], method: :delete do |form| %>
-      <%= form.submit "Delete" %>
-      </li>
-    <% end %>
-  </ul>
+  <%= render "comments/comment", comment: comment %>
 <% end %>
 <br />
 <div>

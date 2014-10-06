@@ -16,7 +16,7 @@ class ImagesController < ApplicationController
     @gallery =  load_gallery_from_url 
     @image = @gallery.images.new(image_params)
     if @image.save
-      redirect_to gallery_image_path(@gallery, @image)
+      redirect_to gallery_path(@gallery)
     else
       render :new
     end 
