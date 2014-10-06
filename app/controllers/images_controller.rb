@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
     @gallery =  load_gallery_from_url 
     @image = @gallery.images.find(params[:id])
     @comment = Comment.new
-    @comments = @image.comments
+    @comments = @image.comments.recent
   end
 
   def new
@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:name, :url)
+    params.require(:image).permit(:name, :url).merge(user_id: current_user.id)
   end
 
   def edit
