@@ -1,6 +1,11 @@
 <p> This image name is <%= @image.name %></p>
 
 <div><%= image_tag @image.url %></div>
+<% @comments.each do |comment| %>
+  <ul>
+    <li><%= comment.body %></li>
+  </ul>
+<% end %>
 <br />
 <div>
   <%= form_for [@image, @comment] do |form| %>
