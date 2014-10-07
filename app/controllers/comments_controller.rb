@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body)
+    params.require(:comment).permit(:body).merge(user_id: current_user.id)
   end
 
   def destroy
@@ -20,5 +20,7 @@ class CommentsController < ApplicationController
     comment.destory
     redirect_to gallery_image_path(@image.gallery, @image) 
   end
+
+
 
 end
