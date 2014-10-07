@@ -13,7 +13,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :show]  
   end
 
-  resources :groups, only: [:new, :create, :show, :index]
+  resources :groups, only: [:new, :create, :show, :index] do
+    resources :group_memberships, only: [:create]
+  end
+
 
 
 end
