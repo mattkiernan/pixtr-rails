@@ -1,1 +1,5 @@
 <h2><%= @group.name %> Page</h2>
+
+<% @members.each do |member| %>
+  <%= member.email %>
+<% end %>
