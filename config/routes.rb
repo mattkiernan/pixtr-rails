@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   resources :groups, only: [:new, :create, :show, :index] do
-    resources :group_memberships, only: [:create]
+    resources :group_memberships, only: [:create, :destroy]
   end
 
 
