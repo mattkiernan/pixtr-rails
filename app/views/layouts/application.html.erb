@@ -18,8 +18,10 @@
 <body>
 <header class="session">
   <% if signed_in? %>
+    <%= link_to "Galleries", galleries_path %>
+    <%= link_to "Groups", groups_path %> |
+    <%= link_to "Sign out", session_path, method: :delete %><br />
     <%= current_user.email %><br />
-    <%= link_to "Sign out", session_path, method: :delete %>
   <% else %>
     <%= link_to "Sign in", new_session_path %>
     <%= link_to "Sign up", new_user_path %>
