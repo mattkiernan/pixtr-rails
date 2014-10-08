@@ -1,0 +1,7 @@
+<h2><%= @user.email %> Page</h2>
+
+<div>
+  <ul>
+    <% @images.each do |image| %>
+      <%= image_tag image.url %>
+    <% end %>
