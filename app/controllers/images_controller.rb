@@ -8,12 +8,12 @@ class ImagesController < ApplicationController
   end
 
   def new
-    @gallery =  load_user_gallery_from_url 
+    @gallery =  load_gallery_from_url 
     @image = @gallery.images.new
   end
 
   def create
-    @gallery =  load_user_gallery_from_url 
+    @gallery =  load_gallery_from_url 
     @image = @gallery.images.new(image_params)
     if @image.save
       redirect_to gallery_path(@gallery)
@@ -27,7 +27,7 @@ class ImagesController < ApplicationController
   end
 
   def edit
-    @gallery =  load_user_gallery_from_url 
+    @gallery =  load_gallery_from_url 
     @image = @gallery.images.find(params[:id])
   end
 
