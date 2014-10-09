@@ -19,6 +19,8 @@ Rails.application.routes.draw do
     resources :group_memberships, only: [:create, :destroy]
   end
 
+  resources :tags, only: [:create, :update, :show, :index]
+
 
 
 end

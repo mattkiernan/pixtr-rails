@@ -1,7 +1,7 @@
 class ImagesController < ApplicationController
 
   def show
-    @gallery =  load_gallery_from_url 
+    @gallery = load_gallery_from_url 
     @image = @gallery.images.find(params[:id])
     @comment = Comment.new
     @comments = @image.comments.recent
@@ -23,7 +23,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:name, :url)
+    params.require(:image).permit(:name, :url, group_ids:[], tag_ids:[])
   end
 
   def edit
@@ -52,5 +52,10 @@ class ImagesController < ApplicationController
   def load_gallery_from_url
     Gallery.find(params[:gallery_id])
   end
+
+  def tag_words(tags)
+    tags.pluck(:name).join(",")
+  end
+
 
 end

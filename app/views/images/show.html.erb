@@ -1,6 +1,10 @@
 <p> This image name is <%= @image.name %></p>
 
 <div><%= image_tag @image.url %></div>
+<%= form_for [@image.gallery, @image] do |form| %>
+ <%= form.collection_check_boxes(:tag_ids, Tag.all, :id, :name)  %>
+ <%= form.submit %>
+ <% end %>
 <% @comments.each do |comment| %>
   <%= render "comments/comment", comment: comment %>
 <% end %>
