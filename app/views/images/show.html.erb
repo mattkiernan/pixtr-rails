@@ -17,4 +17,11 @@
   <% else %>
     <%= button_to "Unlike this image", image_like_path(@image), method: :delete %>
   <% end %>
+  <div>
+  <%= form_for [@gallery, @image] do |form| %>
+    <ul>
+    <li> <%= form.collection_check_boxes(:group_ids, Group.all, :id, :name)  %></li>
+  </ul>
+<%= form.submit %>
+    <% end %>
 </div>
